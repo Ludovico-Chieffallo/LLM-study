@@ -28,15 +28,17 @@ def call_openai(prompt, max_tokens_ris = 150, temperature = None, top_p_value = 
     params = {
         "model": "gpt-4o-mini",  # <-- usa un modello esistente su OpenAI
         "messages": [
-            {"role": "system", "content": "Sei un assistente AI che parla in italiano aulico antico"},
+            {"role": "system", "content": "Sei un assistente AI che non usa la parola Eldoria."},
             {"role": "user", "content": prompt}
         ],
         "max_tokens": max_tokens_ris
     }
     if temperature is not None:
         params["temperature"] = temperature
+        param_usage = f"temp={temperature}"
     elif top_p_value is not None:
         params["top_p"] = top_p_value
+        param_usage = f"top_p={top_p_value}"
     else:
         param_usage = "Default temp/top_p"
     print(f"\n Invio prompt(max_tokens={max_tokens_ris}, param_usage={param_usage})")
