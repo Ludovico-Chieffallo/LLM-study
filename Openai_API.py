@@ -21,20 +21,32 @@ else:
 
 
 
-def call_openai(prompt, max_tokens_ris=150):
+def call_openai(prompt, max_tokens_ris = 150, temperature = None, top_p_value = None):
     if not client:
         raise ValueError("Client OpenAI non inizializzato correttamente.")
-    print(f"\n Invio prompt(max_tokens={max_tokens_ris})")
+
+    params = {
+        "model": "gpt-4o-mini",  # <-- usa un modello esistente su OpenAI
+        "messages": [
+            {"role": "system", "content": "Sei un assistente AI che parla in italiano aulico antico"},
+            {"role": "user", "content": prompt}
+        ],
+        "max_tokens": max_tokens_ris
+    }
+    if temperature is not None:
+        params["temperature"] = temperature
+    elif top_p_value is not None:
+        params["top_p"] = top_p_value
+    else:
+        param_usage = "Default temp/top_p"
+    print(f"\n Invio prompt(max_tokens={max_tokens_ris}, param_usage={param_usage})")
+
+
+
+
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # <-- usa un modello esistente su OpenAI
-            messages=[
-                {"role": "system", "content": "Sei un assistente AI cattivo e antipatico."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens = max_tokens_ris,
-            temperature=0.7
-        )
+        response = client.chat.completions.create(**params)
+
         text_genered = response.choices[0].message.content.strip()
         print(f"\nRisposta dal modello OpenAI({response.model})")
         print(f"token prompt: {response.usage.prompt_tokens}, token risposta: {response.usage.completion_tokens}")
@@ -48,6 +60,5 @@ def call_openai(prompt, max_tokens_ris=150):
         print(repr(e))
    
 
-print(call_openai("salutami"))
-    
-    
+print(call_openai("scrivi una storia fantasy", max_tokens_ris=60, top_p_value=1))
+   
