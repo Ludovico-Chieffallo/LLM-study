@@ -28,7 +28,7 @@ def call_openai(prompt, max_tokens_ris = 150, temperature = None, top_p_value = 
     params = {
         "model": "gpt-4o-mini",  # <-- usa un modello esistente su OpenAI
         "messages": [
-            {"role": "system", "content": "Sei un assistente AI che non usa la parola Eldoria."},
+            {"role": "system", "content": "Sei un assistente AI simpatico."},
             {"role": "user", "content": prompt}
         ],
         "max_tokens": max_tokens_ris
@@ -63,4 +63,3 @@ def call_openai(prompt, max_tokens_ris = 150, temperature = None, top_p_value = 
    
 
 print(call_openai("scrivi una storia fantasy", max_tokens_ris=60, top_p_value=1))
-   
