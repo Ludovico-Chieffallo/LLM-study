@@ -42,7 +42,7 @@ if generator:
             print("No response received from the generator.")
 
     except Exception as e:
-        print("An error occurred during text generation:", e)
+        print("An error occurred during text generation:", e) #exemple
 else:
     print("Generator pipeline is not available.")
 
