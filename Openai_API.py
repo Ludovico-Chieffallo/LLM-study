@@ -1,4 +1,5 @@
 import os
+import json
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -59,7 +60,7 @@ def call_openai(prompt, max_tokens_ris = 150, temperature = None, top_p_value = 
         print(repr(api_error))
     except Exception as e:
         print("\nSi è verificato un errore durante la chiamata all'API di OpenAI:")
-        print(repr(e))
+        print(repr(e)) #x
    
 
 print(call_openai("scrivi una storia fantasy", max_tokens_ris=60, top_p_value=1))
