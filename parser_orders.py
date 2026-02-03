@@ -64,3 +64,5 @@ try:
     print(f"Email Contatto: {contact_email}")
 except json.JSONDecodeError as e:
     raise ValueError(f"Errore nel parsing della risposta JSON: {e}")
+except Exception as e:
+    raise RuntimeError(f"Errore nell'elaborazione dei dati estratti: {e}")
