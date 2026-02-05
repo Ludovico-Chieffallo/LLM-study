@@ -33,3 +33,10 @@ else:
 prompt_template = """Write a short story about a robot learning to love."""
 prompt = PromptTemplate.from_template(prompt_template)
 print("Prompt template created.")
+
+if llm_hf:
+    chain = prompt | llm_hf | StrOutputParser()
+    print("Chain created successfully.")
+else:
+    print("LLM is not initialized. Chain creation skipped.")
+    chain = None
