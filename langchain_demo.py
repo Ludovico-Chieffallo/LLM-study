@@ -30,4 +30,6 @@ else:
                                  )
     print(f"Initialized Hugging Face LLM with repository: {repo_id}") #print
 
-    
+prompt_template = """Write a short story about a robot learning to love."""
+prompt = PromptTemplate.from_template(prompt_template)
+print("Prompt template created.")
