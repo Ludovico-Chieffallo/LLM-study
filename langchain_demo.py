@@ -28,4 +28,6 @@ else:
                                  temperature=0.7,
                                  do_sample=True
                                  )
-    print(f"Initialized Hugging Face LLM with repository: {repo_id}")
+    print(f"Initialized Hugging Face LLM with repository: {repo_id}") #print
+
+    
