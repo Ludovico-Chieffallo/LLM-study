@@ -32,3 +32,19 @@ if os.getenv("OPENAI_API_KEY"):
 else:
     print("Chiave API non trovata. Assicurati di avere la variabile OPENAI_API_KEY nel tuo .env.")
 
+print("definizione del prompt con memoria...")
+prompt= ChatPromptTemplate.from_messages([
+    ("system", "Sei un assistente creativo e conciso."),
+    MessagesPlaceholder(variable_name="history"),
+    ("human", "{question}")
+])
+print("chatprompt con memoria definito correttamente.")
+
+print("\nConfigurazione store della memoria...")
+store = {}
+
+def get_session_history(session_id:str) -> BaseChatMessageHistory:
+    if session_id not in store:
+        store[session_id] = InMemoryChatMessageHistory()
+    return store[session_id]
+print("Store della memoria configurato correttamente.")
