@@ -63,3 +63,6 @@ if openai_embeddings_np is not None and isinstance(openai_embeddings_np, np.ndar
     print(f"Similarità tra frase 0 e frase 1: {similarity_matrix_openai[0][1]:.4f}")
     print(f"Similarità tra frase 0 e frase 2: {similarity_matrix_openai[0][2]:.4f}")
     print(f"Similarità tra frase 1 e frase 2: {similarity_matrix_openai[1][2]:.4f}")
+
+    # confronto con i risultati di openai, risultati non convincenti, i valori di similarità sono molto alti, anche dove non dovrebbero esserlo.
+    
