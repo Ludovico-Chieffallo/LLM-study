@@ -20,9 +20,9 @@ else:
         print("\nSi è verificato un errore durante la chiamata all'API di OpenAI:")
         print(repr(e))  
 sentences = [
-    "The cat is on the table.",
-    "The dog is in the garden.",
-    "tomorrow is a sunny day.",
+    "il gatto è sul tavolo.",
+    "il cagnolino è in giardino.",
+    "domani è una giornata di sole.",
 ]
 openai_embeddings_np = None
 
@@ -47,3 +47,19 @@ if client:
         print(repr(e))
 else:
     print("Client OpenAI non disponibile, non è stato possibile generare gli embedding.")
+
+
+print("\n---Similarità coseno OpenAI---")
+if openai_embeddings_np is not None and isinstance(openai_embeddings_np, np.ndarray):
+    similarity_matrix_openai = cosine_similarity(openai_embeddings_np)
+    print("\nSimilarità coseno (OpenAI):")
+    print(np.round(similarity_matrix_openai, decimals=4))
+
+    print(f"\ninterpretazione:")
+    print(f"Frase 0: {sentences[0]}")
+    print(f"Frase 1: {sentences[1]}")
+    print(f"Frase 2: {sentences[2]}")
+
+    print(f"Similarità tra frase 0 e frase 1: {similarity_matrix_openai[0][1]:.4f}")
+    print(f"Similarità tra frase 0 e frase 2: {similarity_matrix_openai[0][2]:.4f}")
+    print(f"Similarità tra frase 1 e frase 2: {similarity_matrix_openai[1][2]:.4f}")
