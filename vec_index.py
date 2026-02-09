@@ -106,3 +106,36 @@ if corpus_embeddings is not None:
         print(f"  - Primi 3 valori dell'embedding: {first_item_embedding[:3]}...")
 else:
     print("Gli embeddings non sono stati generati correttamente, non è possibile creare l'indice.")
+
+index_filepath = "simple_index.pkl"
+
+if simple_index:
+    try:
+        with open(index_filepath, 'wb') as f_out:
+            pickle.dump(simple_index, f_out, protocol=pickle.HIGHEST_PROTOCOL)
+        print(f"Indice salvato con successo in '{index_filepath}'.")
+    except Exception as e:
+        print(f"Si è verificato un errore durante il salvataggio dell'indice: {repr(e)}")
+else:
+    print("L'indice non è stato creato correttamente, non è possibile salvarlo.")  
+
+loaded_index = None
+if os.path.exists(index_filepath):
+    try:
+        with open(index_filepath, 'rb') as f_in:
+            loaded_index = pickle.load(f_in)
+        print(f"Indice caricato con successo da '{index_filepath}'.")
+
+        if loaded_index:
+            print(f"Numero di voci nell'indice caricato: {len(loaded_index)}")
+            print("Struttura di una voce dell'indice caricato:")
+            first_loaded_embedding, first_loaded_reference = loaded_index[0]
+            print(f"  - Tipo di embedding: {type(first_loaded_embedding)}")
+            print(f"  - Dimensione dell'embedding: {first_loaded_embedding.shape}")
+            print(f"  - Contenuto del riferimento: {first_loaded_reference}")
+            print(f"  - Testo di anteprima: {first_loaded_reference['preview']}")
+            print(f"  - Primi 3 valori dell'embedding: {first_loaded_embedding[:3]}...")
+    except Exception as e:
+        print(f"Si è verificato un errore durante il caricamento dell'indice: {repr(e)}")
+else:
+    print(f"Il file '{index_filepath}' non esiste, non è possibile caricare l'indice.")
