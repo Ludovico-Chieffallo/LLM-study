@@ -2,7 +2,6 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import os
 from openai import OpenAI
-import torch
 from dotenv import load_dotenv
 
 load_dotenv()  # carica .env dalla root del progetto

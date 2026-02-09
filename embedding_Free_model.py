@@ -4,16 +4,14 @@
 
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-import os
 from sentence_transformers import SentenceTransformer
-import openai
 import torch
 
 print("libreries imported successfully")
 
 
 sentences = [
-    "The cat is on the table in the garden.",
+    "The cat is on the table.",
     "The cat is in the garden.",
     "tomorrow is a sunny day.",
 ]
