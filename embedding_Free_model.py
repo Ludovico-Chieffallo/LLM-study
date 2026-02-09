@@ -34,3 +34,5 @@ else:
     print("GPU not available, using CPU")
 st_embeddings = model.encode(sentences)
 print("embeddings generated successfully")
+print(f"Embeddings shape: {st_embeddings.shape}")
+print(f"First embedding vector: {st_embeddings[0][:5]}...")  # Print the first 5 values of the first embedding vector
