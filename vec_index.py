@@ -66,4 +66,19 @@ if corpus_model:
         print("GPU non disponibile, utilizzando CPU.")
 else:
     print("Il modello non è stato caricato correttamente, non è possibile spostarlo sulla GPU.")
-    
+
+corpus_embeddings = None
+if corpus_model:
+    #modifica la riga per usare current_model_name_in_memory
+    print (f"\nGenerazione embeddings per i{len(documents)} documenti usando il modello '{current_model_name_in_memory}'...")
+    #show progress bar è utile per documenti più grandi.
+    corpus_embeddings = corpus_model.encode(documents, show_progress_bar=True)
+
+    print("Embeddings generati con successo.")
+    print(f"Shape degli embeddings: {corpus_embeddings.shape}")
+
+    if corpus_embeddings is not None:
+        print(f"Dimensione di un singolo embedding: {corpus_embeddings[0].shape[0]}")
+        print(f"Primi 3 valori del primo embedding: {corpus_embeddings[0][:3]}...")
+else:
+    print("Il modello non è stato caricato correttamente, non è possibile generare gli embeddings.")
