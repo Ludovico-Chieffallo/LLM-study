@@ -82,3 +82,27 @@ if corpus_model:
         print(f"Primi 3 valori del primo embedding: {corpus_embeddings[0][:3]}...")
 else:
     print("Il modello non è stato caricato correttamente, non è possibile generare gli embeddings.")
+
+
+simple_index = []
+if corpus_embeddings is not None:
+    for i, embedding in enumerate(corpus_embeddings):
+        doc_reference = {
+            "id": i,
+            "text": documents[i],
+            "preview": documents[i] if len(documents[i]) <= 80 else documents[i][:80] + "..."
+        }
+        simple_index.append((embedding, doc_reference))
+
+    print(f"Simple index creato con successo. Numero di voci nell'indice: {len(simple_index)}")
+
+    if simple_index:
+        print("Struttura di una voce dell'indice:")
+        first_item_embedding, first_item_reference = simple_index[0]
+        print(f"  - Tipo di embedding: {type(first_item_embedding)}")
+        print(f"  - Dimensione dell'embedding: {first_item_embedding.shape}")
+        print(f"  - Contenuto del riferimento: {first_item_reference}")
+        print(f"  - Testo di anteprima: {first_item_reference['preview']}")
+        print(f"  - Primi 3 valori dell'embedding: {first_item_embedding[:3]}...")
+else:
+    print("Gli embeddings non sono stati generati correttamente, non è possibile creare l'indice.")
