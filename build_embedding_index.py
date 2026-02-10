@@ -60,7 +60,7 @@ documents = [
     "dogs are famous for their loyalty.",
     "the lifecycle of a butterfly includes the stages of egg, larva, pupa, and adult.",
     "the sun is a star at the center of our solar system.",
-    "the human brain is a complex organ responsible for thought and emotion."
+    "the human brain is a complex organ responsible for thought and emotion.",
     "the history of the Roman Empire is a fascinating subject of study.",
     "the process of photosynthesis allows plants to convert sunlight into energy.",
     "the theory of relativity revolutionized our understanding of space and time.",
@@ -76,12 +76,6 @@ for i, doc in enumerate(documents):
 # documents = [ ... ]
 # - Una lista Python di stringhe. Ogni stringa è un "documento".
 # - In un progetto reale, potrebbe arrivare da file, DB, web scraping, ecc.
-
-# ATTENZIONE IMPORTANTISSIMA (BUG LOGICO NEL CORPUS):
-# Hai scritto:
-#   "the human brain ... emotion."
-#   "the history of the Roman Empire ..."
-# senza virgola tra le due stringhe.
 #
 # In Python, due stringhe letterali adiacenti vengono CONCATENATE automaticamente:
 #   "a" "b"  ->  "ab"
