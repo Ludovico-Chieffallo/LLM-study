@@ -77,15 +77,6 @@ for i, doc in enumerate(documents):
 # - Una lista Python di stringhe. Ogni stringa è un "documento".
 # - In un progetto reale, potrebbe arrivare da file, DB, web scraping, ecc.
 #
-# In Python, due stringhe letterali adiacenti vengono CONCATENATE automaticamente:
-#   "a" "b"  ->  "ab"
-#
-# Quindi quel punto della lista NON contiene due documenti: ne contiene UNO solo
-# che è la concatenazione delle due frasi.
-#
-# Risultato: len(documents) sarà 9 e non 10 (a meno che tu non abbia 10 altrove).
-# Perché uno degli elementi è stato “fuso” con quello dopo.
-#
 # print(f"Number of documents: {len(documents)}")
 # - Serve a verificare rapidamente quanti documenti ci sono.
 
