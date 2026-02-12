@@ -1,4 +1,5 @@
 # Python virtual environment
 venv/
 .env
-.
+.gpt2-mio/
+.risultati/

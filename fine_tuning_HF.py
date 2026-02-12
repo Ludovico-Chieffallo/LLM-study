@@ -16,7 +16,7 @@
 # Concetto chiave:
 # - GPT2LMHeadModel è un modello per “Causal Language Modeling”:
 #   impara a predire il token successivo dato il contesto precedente.
-###############################################################################
+################################################################################
 
 
 ###############################################################################
