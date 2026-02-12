@@ -527,7 +527,6 @@ def get_llm_response(prompt: str, client_openai, llm_model_name: str = "gpt-3.5-
             max_tokens=350,
         )
         return response.choices[0].message.content.strip()
-
     except openai.AuthenticationError as e:
         print(f"ERRORE di Autenticazione OpenAI: {e}")
         return "Errore di Autenticazione OpenAI: Controlla la tua API Key e i permessi."
